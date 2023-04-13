@@ -1,0 +1,35 @@
+﻿@model List<Product>;
+
+<h1>Product List</h1>
+<p>You can manage all the available products here...</p>
+<hr />
+
+
+<table class="table">
+    <thead class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr class="align-middle">
+                <td>@p.Name</td>
+                <td>@p.Category</td>
+                <td>@p.Price$</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Details" asp-route-id="@p.Id" class="btn btn-success">Details</a>
+                        <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-warning">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Count: @Model.Count</p>
