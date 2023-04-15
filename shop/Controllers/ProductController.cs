@@ -1,26 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using shop.Models;
+using shop.Data;
+using shop.Entities;
 
 namespace shop.Controllers
 {
     public class ProductController : Controller
     {
-        static List<Product> products = new List<Product>()
+        private readonly shopdbcontext context;
+        public ProductController(shopdbcontext context)
         {
-            new Product() { Id = 1, Name = "MacBook Pro 2019", Price = 1200, Category = "Electronics" },
-            new Product() { Id = 2, Name = "Samsung S23 Ultra", Price = 1050, Category = "Electronics" },
-            new Product() { Id = 3, Name = "Adidas T-Shirt", Price = 570, Category = "Clothes" },
-            new Product() { Id = 4, Name = "Google Glass 2", Price = 840, Category = "Accesories" }
-        };
-        public IActionResult Index()
+            this.context = context;
+        }
+        public IActionResult AdminPanel()
         {
+            var products = this.context.products.ToList();
+
+            return View(products);
+        }
+        public IActionResult Products() 
+        {
+            var products = this.context.products.ToList();
 
             return View(products);
         }
 
         public IActionResult Details(int id)
         {
-            var item = products.FirstOrDefault(x => x.Id == id);
+            
+            var item = context.products.Find(id);
 
             if (item == null)
                 return NotFound();
@@ -30,14 +37,15 @@ namespace shop.Controllers
 
         public IActionResult Delete(int id)
         {
-            var item = products.FirstOrDefault(x => x.Id == id);
+            var item = context.products.Find(id);
 
             if (item == null)
                 return NotFound();
 
-            products.Remove(item);
+            context.products.Remove(item);
+            context.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("AdminPanel");
         }
 
     }
