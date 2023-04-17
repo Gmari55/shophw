@@ -36,6 +36,7 @@ namespace shop.Data
                 new Product() { Id = 4, Name = "Samsung S23", CategoryId = 1, Price = 1200, description="The Samsung Galaxy S23 specs are top-notch including a Snapdragon 8 Gen 2 chipset, 8GB RAM coupled with 128/256GB storage, and a 3900mAh battery"},
                 new Product() { Id = 6, Name = "MacBook Pro 2019", CategoryId = 1, Price = 1200, description="The 2019 MacBook Pro delivers runs on the super-fast performance with the configuration of the latest 8-core processor with up to 5.0GHz " }
             }); ;
+         
         }
   
         public DbSet<Product> products { get; set; }
