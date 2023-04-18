@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using shop.Data;
+using Data;
 
 #nullable disable
 
-namespace shop.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(shopdbcontext))]
     [Migration("20230415153411_filldata")]

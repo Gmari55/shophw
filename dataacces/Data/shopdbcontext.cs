@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using shop.Entities;
+using Data.Entities;
 
-
-namespace shop.Data
+namespace Data
 {
     public class shopdbcontext : DbContext
     {

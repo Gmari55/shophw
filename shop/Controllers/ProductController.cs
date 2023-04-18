@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using shop.Data;
-using shop.Entities;
+using Data;
+using Data.Entities;
 
 namespace shop.Controllers
 {
     public class ProductController : Controller
     {
+        public void Loadcategories()
+        {
+            ViewBag.CategoryList=new SelectList( context.Categories.ToList(),"Id","Name");
+        }
         private readonly shopdbcontext context;
         public ProductController(shopdbcontext context)
         {
@@ -52,7 +56,7 @@ namespace shop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-       ViewBag.CategoryList=new SelectList( context.Categories.ToList(),"Id","Name");
+            Loadcategories();
             return View();
         }
 
@@ -62,7 +66,7 @@ namespace shop.Controllers
 
             if (!ModelState.IsValid)
             {
-
+                Loadcategories();
                 return View("Create");
             }
 
@@ -76,7 +80,7 @@ namespace shop.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.CategoryList = new SelectList(context.Categories.ToList(), "Id", "Name");
+            Loadcategories();
             var item = context.products.Find(id);
             if (item == null)
                 return NotFound();
@@ -91,7 +95,7 @@ namespace shop.Controllers
 
             if (!ModelState.IsValid)
             {
-
+                Loadcategories();
                 return View("Edit");
             }
 

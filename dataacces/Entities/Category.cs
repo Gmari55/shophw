@@ -1,4 +1,4 @@
-﻿namespace shop.Entities
+﻿namespace Data.Entities
 {
     public class Category
     {
