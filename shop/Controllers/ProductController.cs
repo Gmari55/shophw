@@ -24,7 +24,7 @@ namespace shop.Controllers
         }
         public IActionResult Products() 
         {
-            var products = this.context.products.ToList();
+            var products = this.context.products.OrderByDescending(c => c.datecreate).ThenBy(c => c.datecreate).ToList();
 
             return View(products);
         }
@@ -70,7 +70,7 @@ namespace shop.Controllers
                 return View("Create");
             }
 
-
+            product.datecreate = DateTime.Now;
 
             context.products.Add(product);
             context.SaveChanges();

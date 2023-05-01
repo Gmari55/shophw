@@ -9,11 +9,10 @@
                 <h6 class="card-subtitle mb-2 text-body-secondary">@p.Price$</h6>
                 <p class="card-text pb-3">@p.description</p>
                 <div class="container position-absolute fixed-bottom">
-                <a asp-action="Details" asp-route-id="@p.Id" class=" btn btn-primary">Details</a>
-                <a asp-controller="Favorites" asp-action="Add" asp-route-id="@p.Id" class=" btn btn-primary">♥</a>
+                    <a asp-action="Details" asp-route-id="@p.Id" class=" btn btn-primary">Details</a>
+                    <a asp-controller="Favorites" asp-action="Remove" asp-route-id="@p.Id" class=" btn btn-danger">♥</a>
 
                 </div>
-
             </div>
         </div>
     }
