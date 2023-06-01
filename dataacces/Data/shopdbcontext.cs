@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Data
 {
-    public class shopdbcontext : DbContext
+    public class shopdbcontext : IdentityDbContext
     {
        
 
