@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
- string connstr = builder.Configuration.GetConnectionString("LocalDb");
+ string connstr = builder.Configuration.GetConnectionString("AzureDb");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<shopdbcontext>(x=>x.UseSqlServer(connstr));
